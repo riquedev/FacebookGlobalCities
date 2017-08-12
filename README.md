@@ -3,8 +3,6 @@
 
 Obtenha ID, Nome, Latitude, Longitude de determinado local a partir do próprio Facebook.
 
-## Uso
-Com os dados fornecidos pela requisição é possível obter dados de determinados locais a partir de sua ID no Facebook.
 
 ## Como usar
 ```php
