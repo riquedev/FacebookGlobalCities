@@ -4,12 +4,10 @@ namespace rqdev\Facebook\utils;
 
 /**
  * Esta classe busca cidades por termo.
- * 
  * Atenção, o próprio Facebook é utilizado para esta busca, então todos retornos
  * são de responsabildiade do mesmo.
  * @author Henrique da Silva Santos <rique_dev@hotmail.com>
  * @link <https://github.com/riquedev>
- * 
  */
 class GlobalCities {
 
