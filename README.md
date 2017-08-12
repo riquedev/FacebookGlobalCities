@@ -3,6 +3,8 @@
 
 Obtenha ID, Nome, Latitude, Longitude de determinado local a partir do próprio Facebook.
 
+## Requisitos
+* PHP 7.0 ou superior.
 
 ## Como usar
 ```php
