@@ -2,9 +2,20 @@ language: php
 sudo: false
 script: bundle exec rspec
 dist: precise
+group: edge
 
 php:
   - 7.0
   - 7.1
   - hhvm
   - nightly
+  
+cache:
+    directories:
+        - vendor
+
+script:
+    - php -n GlobalCities.php
+    
+deploy:
+    provider: releases
