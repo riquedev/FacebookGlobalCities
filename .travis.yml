@@ -1,4 +1,7 @@
 language: php
+sudo: false
+script: bundle exec rspec
+dist: precise
 
 php:
   - 7.0
