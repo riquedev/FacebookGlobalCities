@@ -1,14 +1,9 @@
-# FacebookGlobalCities
-[![Build Status](https://travis-ci.org/riquedev/FacebookGlobalCities.svg?branch=master)](https://travis-ci.org/riquedev/FacebookGlobalCities)
-
-Obtenha ID, Nome, Latitude, Longitude de determinado local a partir do próprio Facebook.
-
-## Uso
-Com os dados fornecidos pela requisição é possível obter dados de determinados locais a partir de sua ID no Facebook.
-
-## Como usar
-```php
 <?php
+
+header('Content-Type: application/json');
+
+require_once(realpath(dirname(__FILE__)) . '/GlobalCities.php');
+
 // Local a ser procurado
 $search = 'New York';
 
@@ -28,7 +23,3 @@ $Array = $Cidades->toArray(); // Em Array
 $Object = $Cidades->toObject(); // Em Object
 
 echo $Json;
-
-?>
-```
-

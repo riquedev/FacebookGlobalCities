@@ -102,7 +102,7 @@ class GlobalCities {
         $url .= $this->getLocale();
         $url .= self::_FACEBOOK;
         $url .= self::_PATH;
-        $url .= '?value=' . $this->getValue();
+        $url .= '?value=' . urlencode($this->getValue());
         $url .= '&use_unicorn=' . strval($this->getUse_unicorn());
         $url .= '&__user=' . self::_USER;
         $url .= '&__a=1';
@@ -155,7 +155,7 @@ class GlobalCities {
         return $this->responseError;
     }
 
-    public function setResponseError($responseError) {
+    protected function setResponseError($responseError) {
         $this->responseError = $responseError;
         return $this;
     }
@@ -167,26 +167,31 @@ class GlobalCities {
     }
 
     public function GetCities() {
-        return (new class($this->cities) {
+        if ($this->cities) {
+            return (new class($this->cities) {
 
-                    public $citiesList = [];
+                        public $citiesList = [];
 
-                    public function __construct(array $cities) {
-                        $this->citiesList = $cities;
-                    }
+                        public function __construct(array $cities) {
+                            $this->citiesList = $cities;
+                        }
 
-                    public function toJson(bool $pretty = false) {
-                        return $pretty ? json_encode($this->citiesList, JSON_PRETTY_PRINT) : json_encode($this->citiesList);
-                    }
+                        public function toJson(bool $pretty = false) {
+                            return $pretty ? json_encode($this->citiesList, JSON_PRETTY_PRINT) : json_encode($this->citiesList);
+                        }
 
-                    public function toArray() {
-                        return $this->citiesList;
-                    }
+                        public function toArray() {
+                            return $this->citiesList;
+                        }
 
-                    public function toObject() {
-                        return (object) json_decode($this->toJson());
-                    }
-                });
+                        public function toObject() {
+                            return (object) json_decode($this->toJson());
+                        }
+                    });
+        } else {
+            die($this->getResponseError());
+            return null;
+        }
     }
 
     protected function TranslateResponse() {
